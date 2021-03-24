@@ -1,3 +1,5 @@
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -47,16 +49,40 @@ public class HelloSelenium {
             Thread.sleep(1000);
             
             webElement = driver.findElement(By.id("id"));
-            webElement.sendKeys("아이디 입력");
+            webElement.sendKeys("30133279");
 			
 			//패스워드 입력
             webElement = driver.findElement(By.id("pw"));
-            webElement.sendKeys("비밀번호 입력");
+            webElement.sendKeys("password");
+            
+            
             
             webElement = driver.findElement(By.className("btn_global"));
             webElement.submit();
             
-            Thread.sleep(1000);
+            Thread.sleep(25000);
+            
+            driver.switchTo().frame("minime");
+            
+            webElement = driver.findElement(By.xpath("//a[@class='link_new']"));
+            webElement.sendKeys(Keys.ENTER);
+            
+            Thread.sleep(5000);
+            
+            webElement = driver.findElement(By.xpath("//input[@class='search']"));
+            webElement.sendKeys("JavaScript Weekly");
+            webElement.sendKeys(Keys.ENTER);
+            
+            Thread.sleep(5000);
+            
+            //System.out.println(driver.getPageSource());
+            
+           List<WebElement> webElements = driver.findElements(By.xpath("//ol[@class='mailList   sender_context']/li"));
+           //System.out.println(webElements);
+           for(WebElement el : webElements) {
+        	   //System.out.println(el);
+        	   
+           }
     
         } catch (Exception e) {
             
